@@ -1,0 +1,193 @@
+/* VARIABLES - Theme Palette */
+:root {
+  --font-family-main: 'Inter', sans-serif;
+  --color-brand-primary: #4a6cf7;
+  --color-brand-secondary: #ff7a59;
+  --color-background-soft: #eef4fb;
+  --color-white: #ffffff;
+  --color-dark: #2d2d2d;
+  --color-muted: #6c757d;
+  --shadow-subtle: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-hover: 0 10px 30px rgba(0,0,0,0.15);
+  --radius-card: 1.25rem;
+  --radius-btn: 2rem;
+  --transition: all 0.3s ease;
+}
+
+/*  BASE */
+body {
+  font-family: var(--font-family-main);
+  background: var(--color-background-soft);
+  color: var(--color-dark);
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 1.6rem;
+  background: linear-gradient(45deg, var(--color-brand-primary), var(--color-brand-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.8px;
+}
+
+/* HEADER / NAVBAR */
+.header {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #e4e7eb;
+  box-shadow: var(--shadow-subtle);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: var(--transition);
+}
+
+.header .form-control {
+  border-radius: var(--radius-btn);
+  border: 1px solid #ddd;
+  padding: 0.45rem 1rem;
+  transition: var(--transition);
+}
+
+.header .form-control:focus {
+  border-color: var(--color-brand-primary);
+  box-shadow: 0 0 0 0.2rem rgba(74, 108, 247, 0.25);
+}
+
+.header .btn-nav {
+  border-radius: var(--radius-btn);
+  font-weight: 500;
+  padding: 0.45rem 1.1rem;
+  color: var(--color-dark);
+  transition: var(--transition);
+}
+
+.header .btn-nav:hover {
+  background: linear-gradient(135deg, var(--color-brand-primary), var(--color-brand-secondary));
+  color: var(--color-white);
+}
+
+.header .btn-logout {
+  border-radius: var(--radius-btn);
+  font-weight: 600;
+  padding: 0.45rem 1.1rem;
+  background: #ffe6e6;
+  color: #e63946;
+  transition: var(--transition);
+}
+
+.header .btn-logout:hover {
+  background: #e63946;
+  color: var(--color-white);
+  box-shadow: var(--shadow-hover);
+}
+
+/* MAIN CONTENT / CARDS */
+.question-card,
+.answer-card {
+  background: var(--color-white);
+  border-radius: var(--radius-card);
+  border: none;
+  box-shadow: var(--shadow-subtle);
+  padding: 1.25rem;
+  transition: var(--transition);
+}
+
+.question-card:hover,
+.answer-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.question-card .card-title {
+  color: var(--color-brand-primary);
+  font-weight: 600;
+}
+
+
+.question-card .badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #555;
+  background-color: #f0f2f5;
+  border: 1px solid #ddd;
+  padding: 0.25rem 0.6rem;  /* tighter padding */
+  line-height: 1;           /* prevents extra height */
+  border-radius: 0.75rem;   /* pill style */
+  white-space: nowrap;      /* no wrapping */
+}
+
+
+/*----BUTTONS----*/
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-brand-primary), var(--color-brand-secondary));
+  border: none;
+  border-radius: var(--radius-btn);
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  transition: var(--transition);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-outline-success,
+.btn-outline-danger,
+.btn-primary,
+.btn {
+  transition: var(--transition);
+}
+
+.btn-outline-success:hover {
+  background: #28a745;
+  color: var(--color-white);
+}
+
+.btn-outline-danger:hover {
+  background: #dc3545;
+  color: var(--color-white);
+}
+
+/*  ANSWERS STYLING  */
+.answer-card {
+  border-left: 4px solid var(--color-brand-primary);
+}
+
+.answer-card .badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1; /* pushes footer down */
+}
+
+.footer {
+  margin-top: auto; /* stick footer at bottom */
+}
+
+
+
+/*----RESPONSIVENESS----*/
+@media (max-width: 768px) {
+  .header .d-flex {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+  .header .form-control {
+    flex-grow: 1;
+    min-width: unset;
+  }
+}

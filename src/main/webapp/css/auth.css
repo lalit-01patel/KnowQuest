@@ -1,0 +1,132 @@
+/* VARIABLES */
+:root {
+  --font-poppins: 'Poppins', sans-serif;
+  --color-brand-primary: #5e72e4;   /* A vibrant blue for the brand */
+  --color-brand-secondary: #ff8c00; /* A contrasting orange for accents */
+  --color-background-soft: #ADD8E6; /* NEW: A soft blue background */
+  --color-white: #ffffff;
+  --color-text-dark: #333;
+  --color-text-link: var(--color-brand-primary);
+  --shadow-subtle: 0 4px 15px rgba(0,0,0,0.1);
+  --shadow-hover: 0 8px 25px rgba(0,0,0,0.2);
+  --border-radius-card: 1.5rem;
+  --border-radius-button: 2rem;
+}
+
+/* BASE STYLES */
+body.auth-body {
+  font-family: var(--font-poppins);
+  background-color: var(--color-background-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 2rem 1rem;
+}
+
+/* AUTH COMPONENT */
+.auth-card {
+  background: var(--color-white);
+  border-radius: var(--border-radius-card);
+  box-shadow: var(--shadow-subtle);
+  padding: 2.5rem;
+  max-width: 450px;
+  width: 100%;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-sizing: border-box; /* IMPORTANT: Ensures padding and border are included in the element's total width and height */
+}
+
+.auth-card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 2.2rem;
+  color: var(--color-brand-primary);
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.auth-card h5 {
+  color: var(--color-text-dark);
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.auth-form .form-label {
+  text-align: left;
+  display: block;
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+.auth-form .form-control,
+.auth-form .form-select {
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ddd;
+  background: var(--color-background-soft);
+  transition: all 0.3s ease;
+  width: 100%; /* Ensures the input fields take up the full width */
+  box-sizing: border-box; /* Ensures padding is included in the total width */
+}
+
+.auth-form .form-control:focus,
+.auth-form .form-select:focus {
+  border-color: var(--color-brand-primary);
+  background: var(--color-white);
+  box-shadow: 0 0 0 0.25rem rgba(94, 114, 228, 0.25);
+  outline: none;
+}
+
+/* Buttons */
+.btn-auth {
+  background: linear-gradient(135deg, var(--color-brand-primary), var(--color-brand-secondary));
+  color: var(--color-white);
+  border-radius: var(--border-radius-button);
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border: none;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+
+.btn-auth:hover {
+  background: linear-gradient(135deg, #4b5cd3, #e67e00);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.redirect-text {
+  font-size: 0.9rem;
+  margin-top: 1.5rem;
+}
+
+.redirect-text a {
+  color: var(--color-text-link);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.redirect-text a:hover {
+  color: #3e50c7;
+  text-decoration: underline;
+}
+
+/* RESPONSIVENESS  */
+@media (max-width: 576px) {
+  .auth-card {
+    padding: 1.5rem; /* Reduce padding on smaller screens */
+  }
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}

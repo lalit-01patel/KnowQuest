@@ -1,0 +1,15 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Build output
+/out/
+/target/
+
+# Tomcat / SmartTomcat configs and logs
+.smarttomcat/
+*.log
+
+# OS / System files
+.DS_Store
+Thumbs.db
