@@ -28,10 +28,10 @@
         <form action="search" method="get" class="d-flex w-100">
           <input id="searchInput" class="form-control" name="query" value="<%= searchQuery %>" style="min-width:260px" placeholder="Search questions..."/>
         </form>
-        <a href="${pageContext.request.contextPath}/profile.jsp" class="btn btn-nav">
+        <a href="${pageContext.request.contextPath}/profile.jsp" class="btn btn-profile">
           <%= user.getName() %>
         </a>
-        <a href="logout" class="btn btn-logout">Logout</a>
+        <a href="logout" class="btn btn-danger">Logout</a>
       </div>
     </div>
   </header>

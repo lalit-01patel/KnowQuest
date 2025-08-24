@@ -69,15 +69,15 @@ public class AnswerDAO {
         }
     }
 
-    // Downvote an answer
-    public void downvote(int id) {
-        String sql = "UPDATE answers SET downvotes = downvotes + 1 WHERE id=?";
+    // ✅ Method to increase downvote count for a given answer
+    public void downvote(int answerId) {
+        String sql = "UPDATE answers SET downvotes = downvotes + 1 WHERE id = ?";
         try (Connection con = DBConnection.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setInt(1, id);
+            ps.setInt(1, answerId);
             ps.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
@@ -134,6 +134,44 @@ public class AnswerDAO {
             if (rs.next()) return rs.getInt(1);
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+        return 0;
+    }
+
+    public int countUpvotesByUser(int userId) {
+        String sql = "SELECT COALESCE(SUM(upvotes),0) FROM answers WHERE user_id=?";
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, userId);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) return rs.getInt(1);
+        } catch (SQLException e) { throw new RuntimeException(e); }
+        return 0;
+    }
+
+    public int countVerifiedByUser(int userId) {
+        String sql = "SELECT COUNT(*) FROM answers WHERE user_id=? AND verified=1";
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, userId);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) return rs.getInt(1);
+        } catch (SQLException e) { throw new RuntimeException(e); }
+        return 0;
+    }
+
+    // ✅ Method to count all downvotes received by a user across their answers
+    public int countDownvotesByUser(int userId) {
+        String sql = "SELECT COALESCE(SUM(downvotes), 0) FROM answers WHERE user_id = ?";
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, userId);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return 0;
     }

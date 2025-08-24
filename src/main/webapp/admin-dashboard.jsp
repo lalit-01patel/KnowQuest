@@ -32,7 +32,7 @@
     </div>
 
     <div class="mt-4">
-        <a href="home" class="btn btn-primary">⬅ Back to Home</a>
+        <a href="home" class="btn btn-home">⬅ Back to Home</a>
     </div>
 </body>
 </html>
